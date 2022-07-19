@@ -1,5 +1,5 @@
 <?php
-    require_once 'controllers/UserController.php';
+    require_once 'controllers/Controller.php';
     $action = filter_input(INPUT_POST, 'action');
     if ($action == null) {
         $action = filter_input(INPUT_GET, 'action');
@@ -7,7 +7,7 @@
             $action = 'index';
         }
     }
-    $userController = new UserController();
-    $userController->route($action);
+    $controller = new Controller();
+    $controller->route($action);
 
 

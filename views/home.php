@@ -14,29 +14,28 @@
 <body>
     <div class="d-flex align-items-center justify-content-center">
         <div class="pt-5 w-50">
-            <h3>All users:</h3>
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr class="text-center">
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Action</th>
+                        <th>Mã học phần</th>
+                        <th>Tên học phần</th>
+                        <th>Số tín chỉ</th>
+                        <th>Mã khoa</th>
+                        <th>Tên khoa</th>
+                        <th>Tùy chọn</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data['users'] as $user) { ?>
+                    <?php foreach ($data['courses'] as $course) { ?>
                         <tr class="text-center">
-                            <td> <?php echo $user["id"]; ?></td>
-                            <td> <?php echo $user["name"]; ?></td>
-                            <td> <?php echo $user["email"]; ?></td>
-                            <td> <?php echo $user["phone"] ? $user["phone"] : "null"; ?></td>
+                            <td> <?php echo $course["mahocphan"]; ?></td>
+                            <td> <?php echo $course["tenhocphan"]; ?></td>
+                            <td> <?php echo $course["sotinchi"]; ?></td>
+                            <td> <?php echo $course["makhoa"]; ?></td>
+                            <td> <?php echo $course["tenkhoa"]; ?></td>
                             <td>
                                 <div class="right">
-                                    <a class="btn btn-danger"
-                                        href="index.php?action=delete&id=<?php echo $user['id']; ?>"
-                                    >
+                                    <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo $course["mahocphan"]; ?>">
                                         Delete
                                     </a>
                                 </div>
@@ -45,7 +44,6 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <a href="./views/create.php">Create new user</a>
         </div>
     </div>
 

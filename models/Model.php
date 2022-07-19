@@ -1,5 +1,5 @@
 <?php
-class User
+class Model
 {
     private $id, $name, $phone, $email;
     private $connection;
@@ -8,11 +8,12 @@ class User
         $this->connection = $connection;
     }
 
-
-
     public function getAll()
     {
-        $statement = $this->connection->prepare("SELECT id, name, email, phone FROM users");
+        $statement = $this->connection->prepare("SELECT mahocphan, tenhocphan,
+         sotinchi, hocphan.makhoa, tenkhoa from hocphan
+        INNER JOIN khoa 
+        on hocphan.makhoa =  khoa.makhoa");
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -30,7 +31,7 @@ class User
 
     public function remove($id)
     {
-        $statement = $this->connection->prepare("DELETE FROM users where id=:id");
+        $statement = $this->connection->prepare("DELETE FROM hocphan where mahocphan=:id");
         return $statement->execute(['id' => $id]);
     }
 

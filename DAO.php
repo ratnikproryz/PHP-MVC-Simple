@@ -6,7 +6,7 @@ class DAO
     public function __construct()
     {
         try {
-            $this->dsn='mysql:dbname=multichoice_exam;host=localhost';
+            $this->dsn='mysql:dbname=exame;host=localhost';
             $this->user = "root";
             $this->password = "";
             $this->connection = new PDO($this->dsn, $this->user, $this->password);
