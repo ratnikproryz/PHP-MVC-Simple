@@ -1,10 +1,13 @@
 {
+    "name": "ratnik/mvc-demo",
+    "version": "1.0.0",
     "require": {
         "monolog/monolog": "^2.9"
     },
     "autoload": {
         "psr-4": {
-            "App\\": ""
+            "App\\": "src/",
+            "Api\\": "api/"
         }
     }
 }

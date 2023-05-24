@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Department;
-use DB\DAO;
+use App\DAO;
 
 class DepartmentController
 {
@@ -11,7 +11,6 @@ class DepartmentController
 
     public function __construct()
     {
-        require_once __DIR__ . '/../DAO.php';
         $dao = new DAO();
         $this->connection = $dao->getConnection();
     }
@@ -66,6 +65,6 @@ class DepartmentController
 
     public function view($view, $data = null)
     {
-        require_once __DIR__ . '/../views/' . $view . '.php';
+        require_once './views/' . $view . '.php';
     }
 }
