@@ -2,17 +2,15 @@
 
 namespace App\Controllers;
 
-use App\Models\Department;
-use App\DAO;
+use App\Repositories\DepartmentRepository;
 
 class DepartmentController
 {
-    private $connection;
+    private $departmentRepository;
 
     public function __construct()
     {
-        $dao = new DAO();
-        $this->connection = $dao->getConnection();
+        $this->departmentRepository = new DepartmentRepository();
     }
     public function route($action)
     {
@@ -36,9 +34,8 @@ class DepartmentController
 
     public function index()
     {
-        $model = new Department($this->connection);
-        $courses = $model->getAll();
-        $this->view('home', ['courses' => $courses]);
+        $departments = $this->departmentRepository->getAll();
+        $this->view('home', ['departments' => $departments]);
     }
 
     public function create()
@@ -48,18 +45,13 @@ class DepartmentController
 
     public function store()
     {
-        $userModel = new Department($this->connection);
-        $userModel->setMaKhoa($_POST['makhoa']);
-        $userModel->setTenKhoa($_POST['tenkhoa']);
-        $userModel->save();
+        $this->departmentRepository->store();
         header('Location: index.php');
     }
 
     public function delete()
     {
-        $id = $_GET['id'];
-        $model = new Department($this->connection);
-        $model->remove($id);
+        $this->departmentRepository->delete();
         header('Location: index.php');
     }
 

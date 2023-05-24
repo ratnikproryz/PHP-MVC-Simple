@@ -16,20 +16,20 @@
         <div class="pt-5 w-50">
             <table class="table table-bordered">
                 <thead class="thead-light">
-                    <tr class="text-center">
+                    <tr class="text-center ">
                         <th>Mã khoa</th>
                         <th>Tên khoa</th>
                         <th>Tùy chọn</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data['courses'] as $course) { ?>
+                    <?php foreach ($data['departments'] as $department) { ?>
                         <tr class="text-center">
-                            <td> <?php echo $course["makhoa"]; ?></td>
-                            <td> <?php echo $course["tenkhoa"]; ?></td>
+                            <td> <?php echo $department["makhoa"]; ?></td>
+                            <td> <?php echo $department["tenkhoa"]; ?></td>
                             <td>
                                 <div class="right">
-                                    <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo $course["makhoa"]; ?>">
+                                    <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo $department["makhoa"]; ?>">
                                         Delete
                                     </a>
                                 </div>

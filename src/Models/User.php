@@ -4,7 +4,7 @@ namespace App\Models;
 
 class User
 {
-    private $makhoa, $tenkhoa;
+    private $id, $name, $phone, $email;
     private $connection;
     public function __construct($connection)
     {
@@ -21,33 +21,50 @@ class User
     public function save()
     {
         $statement = $this->connection
-            ->prepare("INSERT INTO khoa (makhoa, tenkhoa) VALUES(:makhoa, :tenkhoa)");
+            ->prepare("INSERT INTO users (name, email, phone) VALUES(:name, :email, :phone)");
         return $statement->execute([
-            "makhoa" => $this->makhoa,
-            "tenkhoa" => $this->tenkhoa,
+            "name" => $this->name,
+            "email" => $this->email,
+            "phone" => $this->phone
         ]);
     }
 
     public function remove($id)
     {
-        $statement = $this->connection->prepare("DELETE FROM hocphan where mahocphan=:id");
-        return $statement->execute(['mahocphan' => $id]);
+        $statement = $this->connection->prepare("DELETE FROM users where id=:id");
+        return $statement->execute(['id' => $id]);
     }
 
-    public function getMaKhoa()
+    public function getId()
     {
-        return $this->makhoa;
+        return $this->id;
     }
-    public function setMaKhoa($makhoa)
+    public function setID($id)
     {
-        $this->makhoa = $makhoa;
+        $this->id = $id;
     }
-    public function getTenKhoa()
+    public function getName()
     {
-        return $this->tenkhoa;
+        return $this->name;
     }
-    public function setTenKhoa($tenkhoa)
+    public function setName($name)
     {
-        $this->tenkhoa = $tenkhoa;
+        $this->name = $name;
+    }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
     }
 }
