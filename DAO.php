@@ -1,4 +1,10 @@
 <?php
+namespace DB;
+
+use PDO;
+use PDOException;
+use Exception;
+
 class DAO
 {
     private $dsn, $user, $password;

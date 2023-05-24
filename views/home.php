@@ -17,9 +17,6 @@
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr class="text-center">
-                        <th>Mã học phần</th>
-                        <th>Tên học phần</th>
-                        <th>Số tín chỉ</th>
                         <th>Mã khoa</th>
                         <th>Tên khoa</th>
                         <th>Tùy chọn</th>
@@ -28,14 +25,11 @@
                 <tbody>
                     <?php foreach ($data['courses'] as $course) { ?>
                         <tr class="text-center">
-                            <td> <?php echo $course["mahocphan"]; ?></td>
-                            <td> <?php echo $course["tenhocphan"]; ?></td>
-                            <td> <?php echo $course["sotinchi"]; ?></td>
                             <td> <?php echo $course["makhoa"]; ?></td>
                             <td> <?php echo $course["tenkhoa"]; ?></td>
                             <td>
                                 <div class="right">
-                                    <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo $course["mahocphan"]; ?>">
+                                    <a class="btn btn-danger" href="index.php?action=delete&id=<?php echo $course["makhoa"]; ?>">
                                         Delete
                                     </a>
                                 </div>
@@ -44,6 +38,7 @@
                     <?php } ?>
                 </tbody>
             </table>
+            <a href="./views/create.php">Thêm khoa mới</a>
         </div>
     </div>
 

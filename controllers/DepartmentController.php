@@ -1,13 +1,16 @@
 <?php
-class Controller
-{
+namespace App\Controllers;
 
+use App\Models\Department;
+use DB\DAO;
+
+class DepartmentController
+{
     private $connection;
 
     public function __construct()
     {
         require_once __DIR__ . '/../DAO.php';
-        require_once __DIR__ . '/../models/Model.php';
         $dao = new DAO();
         $this->connection = $dao->getConnection();
     }
@@ -16,6 +19,12 @@ class Controller
         switch ($action) {
             case 'index':
                 $this->index();
+                break;
+            case 'create':
+                $this->create();
+                break;
+            case 'store':
+                $this->store();
                 break;
             case 'delete':
                 $this->delete();
@@ -27,15 +36,29 @@ class Controller
 
     public function index()
     {
-        $model = new Model($this->connection);
+        $model = new Department($this->connection);
         $courses = $model->getAll();
         $this->view('home', ['courses' => $courses]);
+    }
+
+    public function create()
+    {
+        $this->view('create');
+    }
+
+    public function store()
+    {
+        $userModel = new Department($this->connection);
+        $userModel->setMaKhoa($_POST['makhoa']);
+        $userModel->setTenKhoa($_POST['tenkhoa']);
+        $userModel->save();
+        header('Location: index.php');
     }
 
     public function delete()
     {
         $id = $_GET['id'];
-        $model = new Model($this->connection);
+        $model = new Department($this->connection);
         $model->remove($id);
         header('Location: index.php');
     }
